@@ -30,6 +30,10 @@
             }, {});
             console.log(duplication)
 
+            /*filter + map, which Species has more SepalLength than 5?*/
+            const maj_sLen = data.filter(d => d.SepalLength > 5).map(d => d.Species);
+            console.log('maj_sLen', maj_sLen)
+
             /*reduce sum and simple create Elements*/
             const num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
