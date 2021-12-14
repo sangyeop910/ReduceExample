@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+<meta charset="utf-8">
+
+<head>
+    <title>1</title>
+</head>
+
+<body>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <div id="con"></div>
+    <script>
+        d3.json("https://raw.githubusercontent.com/sangyeop910/iris/main/iris(150).json").then(result => {
+            console.log(result)
+            const data = result;
+            console.log('data', data)
+            const sum = data.reduce((stack, current) => {
+                return stack + current.SepalLength;
+            }, 0);
+            console.log('sum', sum);
+
+            const duplication = data.reduce((stack, current) => {
+                stack[current.Species] = ++stack[current.Species] || 1;
+                return stack;
+            }, {});
+            console.log(duplication)
+        }).catch(e => {
+            console.log(e)
+        })
+        const num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+        const sum1 = num.reduce((stack, current) => stack + current);
+
+        function sumreduce(stack, current) {
+            return stack + current;
+        }
+
+        const sum2 = num.reduce(sumreduce);
+
+        const con = document.getElementById('con');
+
+        const newdiv1 = document.createElement('div');
+        const newdiv2 = document.createElement('div');
+
+        newdiv1.setAttribute('id', 'new');
+        newdiv2.setAttribute('id', 'new');
+
+        newdiv1.innerHTML = sum1;
+        newdiv2.innerHTML = sum2;
+
+        con.appendChild(newdiv1);
+        con.appendChild(newdiv2);
+    </script>
+</body>
+
+</html>
